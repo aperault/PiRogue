@@ -53,6 +53,12 @@ ifconfig eth0
 ```
 and remember the IP address. It should look like `192.128.0.12`.
 
+You also have to expand the root partition in order to get room: 
+```
+parted /dev/mmcblk0 resizepart 2 -- -1
+resize2fs /dev/mmcblk0p2
+```
+
 ### 3 - Install Ansible - _on your computer_
 To install ansible, please follow the [Ansible documentation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
 
