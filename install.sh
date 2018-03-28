@@ -77,7 +77,7 @@ cd
 rm -rf /tmp/ssd1306
 
 # Add a reboot task in cron table displaying the boot screen
-echo @reboot /usr/bin/python ${PIROGUE_ROOT_DIR}/oled-screen/boot.py /etc/cron.d/pirogue
+echo @reboot /usr/bin/python ${PIROGUE_ROOT_DIR}/oled-screen/boot.py > /etc/cron.d/pirogue
 
 # Add a service displaying PiRogue details
 ln -s ${PIROGUE_ROOT_DIR}/oled-screen/display_details.service /etc/systemd/system/display_details.service
