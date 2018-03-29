@@ -59,6 +59,12 @@ parted /dev/mmcblk0 resizepart 2 -- -1
 resize2fs /dev/mmcblk0p2
 ```
 
+Finally, take the time to upgrade your Linux distribution:
+```
+apt-get update
+apt-get dist-upgrade
+```
+
 ### 3 - Install Ansible - _on your computer_
 To install ansible, please follow the [Ansible documentation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
 
