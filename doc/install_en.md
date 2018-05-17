@@ -1,6 +1,23 @@
 # Installation
 This tutorial was tested with Kali GNU/Linux rolling `2018.1`.
 
+## Hardware
+The PiRogue is based on:
+*  a Raspberry Pi 3
+*  a `TL WN725N` version `2.1` or `2.2` 
+*  a 32GB SD-card
+*  a `SSD1306` I2C 0.96" OLED screen
+
+A custom 3D printed case is [available on Thingiverse](https://www.thingiverse.com/thing:2822262).
+
+### Connect the OLED screen
+To display things on the tiny screen, you have to connect it to the Rapberry Pi GPIO. Follow this wiring schema:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/U039b/PiRogue/master/pictures/screen_wiring.png" alt="OLED screen wiring"/>
+</p>
+
+For more details about the screen and the GPIO, have a look to [my PiRouter tutorial](https://esther.codes/post/pi_router_story/#ep4).
+
 ## 1 - Install Kali GNU/Linux - _on your computer_
 Please refer to the [Kali documentation](https://docs.kali.org/kali-on-arm/install-kali-linux-arm-raspberry-pi) for this step.
 

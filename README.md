@@ -19,23 +19,6 @@ Since PiRogue is based on [Kali GNU/Linux](https://www.kali.org/), it offers [pl
 
 This project was initiated with the participation of [@MaliciaRogue](https://twitter.com/MaliciaRogue).
 
-## Hardware
-The PiRogue is based on:
-*  a Raspberry Pi 3
-*  a `TL WN725N` version `2.1` or `2.2` 
-*  a 32GB SD-card
-*  a `SSD1306` I2C 0.96" OLED screen
-
-A custom 3D printed case is [available on Thingiverse](https://www.thingiverse.com/thing:2822262).
-
-### Connect the OLED screen
-To display things on the tiny screen, you have to connect it to the Rapberry Pi GPIO. Follow this wiring schema:
-<p align="center">
-  <img src="https://raw.githubusercontent.com/U039b/PiRogue/master/pictures/screen_wiring.png" alt="OLED screen wiring"/>
-</p>
-
-For more details about the screen and the GPIO, have a look to [my PiRouter tutorial](https://esther.codes/post/pi_router_story/#ep4).
-
 ## Demo
 * [Ep1 - Capture HTTP/S traffic](https://www.youtube.com/watch?v=o0OSaSh0HJw)
 
@@ -74,23 +57,6 @@ L'écran OLED situé sur le dessus du PiRogue affichera :
 Le PiRogue étant basée sur [Kali GNU/Linux](https://www.kali.org/), il offre [un grand nombre d'outils](https://tools.kali.org/).
 
 Ce projet a été initié avec l'active participation de [@MaliciaRogue](https://twitter.com/MaliciaRogue).
-
-## Hardware
-Le PiRogue se base sur :
-*  un Raspberry Pi 3
-*  un dongle `TL WN725N` version `2.1` ou `2.2` 
-*  une SD-card de 32GB
-*  un écran OLED I2C de 0.96" `SSD1306`
-
-Un boîtier réalisable avec une imprimante 3D est [disponible sur Thingiverse](https://www.thingiverse.com/thing:2822262).
-
-### Connexion de l'écran OLED
-Afin de tirer profit de l'écran, vous devez le connecter aux GPIO du Raspberry Pi en suivant ce schéma : 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/U039b/PiRogue/master/pictures/screen_wiring.png" alt="OLED screen wiring"/>
-</p>
-
-Pour plus de détails, vous pouvez consulter le [tutoriel du PiRouter](https://esther.codes/post/pi_router_story/#ep4).
 
 ## Demo
 * [Ep1 - Capture du trafic HTTP/S](https://www.youtube.com/watch?v=o0OSaSh0HJw)
