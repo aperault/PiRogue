@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/U039b/PiRogue/master/pictures/icon.png" alt="PiRogue icon"/>
 </p>
 
-# PiRogue
+# 🇬🇧 PiRogue
 PiRogue is a small device meant to ease network interception and analysis. PiRogue is based on a [Raspberry Pi 3](https://www.raspberrypi.org/) and [Kali GNU/Linux](https://www.kali.org/). This project is for educational purpose. 
 
 By default, PiRogue will mount a rogue Wi-fi access point with the SSID `PiRogue` without password available on `wlan1` which is the Wi-fi dongle. The Internet connection will be dynamically shared with the rogue Wi-fi network. PiRogue will automatically share the active connection (`wlan0` or `eth0`). 
@@ -37,76 +37,10 @@ To display things on the tiny screen, you have to connect it to the Rapberry Pi 
 For more details about the screen and the GPIO, have a look to [my PiRouter tutorial](https://esther.codes/post/pi_router_story/#ep4).
 
 ## Demo
-*  [Ep1 - Capture HTTP/S traffic](https://www.youtube.com/watch?v=o0OSaSh0HJw)
+* [Ep1 - Capture HTTP/S traffic](https://www.youtube.com/watch?v=o0OSaSh0HJw)
 
 ## Installation
-This tutorial was tested with Kali GNU/Linux rolling `2018.1`.
-
-### 1 - Install Kali GNU/Linux - _on your computer_
-Please refer to the [Kali documentation](https://docs.kali.org/kali-on-arm/install-kali-linux-arm-raspberry-pi) for this step.
-
-### 2 - Prepare the system - _on your PiRogue_
-Connect your PiRogue to your ethernet network. An Internet connection is required. Once done, power it on and use `root` as username and `toor` as password to log in.
-You need to get its IP address in order to install the customization. To do, open a terminal and type:
-```
-ifconfig eth0
-```
-and remember the IP address. It should look like `192.128.0.12`.
-
-You also have to expand the root partition in order to get room: 
-```
-parted /dev/mmcblk0 resizepart 2 -- -1
-resize2fs /dev/mmcblk0p2
-```
-
-Finally, take the time to upgrade your Linux distribution:
-```
-apt-get update
-apt-get dist-upgrade
-```
-
-### 3 - Install Ansible - _on your computer_
-To install ansible, please follow the [Ansible documentation guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
-
-### 4 - Install PiRogue customization - _on your computer_
-To install and configure your PiRogue, you have to clone the [PiRogue-ansible](https://github.com/U039b/PiRogue-ansible) Git repository:
-```
-git clone https://github.com/U039b/PiRogue-ansible.git /tmp/PiRogue
-```
-
-Then, go into the `/tmp/PiRogue` directory:
-```
-cd /tmp/PiRogue
-```
-and edit the `inventory.ini` file and correct the IP address specified just after `ansible_host=`. It should look like:
-```
-pirogue_1 ansible_host=192.128.0.12  ansible_ssh_user=root
-```
-
-**NB**: if you want to install the PiRogue customization on multiple PiRogue devices at the same time, just duplicate the configuration, one line per device. Be sure to specify the correct IP address for each device. Example:
-```
-pirogue_1 ansible_host=192.168.1.123  ansible_ssh_user=root
-pirogue_2 ansible_host=192.168.1.124  ansible_ssh_user=root
-pirogue_3 ansible_host=192.168.1.125  ansible_ssh_user=root
-```
-
-Finally, start the installation by using the following command:
-```
-ansible-playbook -i inventory.ini --ask-pass pirogue.yml
-```
-It will ask you an SSH password, use `toor` if you do not have changed your password on your PiRogue, otherwise, use your new password.
-
-### 5 - Reboot - _on your PiRogue_
-On you PiRogue, open a terminal and type the following command:
-```
-reboot
-```
-**NB**: Remember that all the PiRogue files reside in `/usr/share/PiRogue` on your PiRogue.
-
-### 6 - Screen customization - _on your PiRogue_
-PiRogue has a tiny OLED screen on top of it. This screen displays two different screens:
-*  the boot screen defined in `oled-screen/boot.py`
-*  the details screen defined in `oled-screen/infos.py`
+* [Installation guide](doc/install_en.md)
 
 ## Use cases
 ### Transparent proxying with MITMproxy
@@ -116,5 +50,61 @@ While using `mitmproxy` you can use between at least 2 different modes:
 
 An helper script `/usr/share/PiRogue/proxy/transparent.sh` is available. By executing this script, HTTP and HTTPS traffic from `wlan1` will be redirected to `mitmproxy`.
 
-### Google Location service live map
-Please refer to the [GLS live map plugin](https://github.com/U039b/PiRogue/tree/master/mitmproxy)
+### Google Location Services live map
+Please refer to the [GLS live map plugin](https://github.com/PiRanhaLysis/PiRogue/tree/master/mitmproxy)
+
+<hr>
+
+# 🇫🇷 PiRogue
+Le PiRogue est un petit équipement ayant pour objectif de faciliter l'interception de trafic réseau et de l'analyser. Le PiRogue
+est basé sur un [Raspberry Pi 3](https://www.raspberrypi.org/) et la distribution [Kali GNU/Linux](https://www.kali.org/). 
+Ce projet est à but éducatif. 
+
+Par défaut, le PiRogue crée un point d'accès wi-fi avec le SSID `PiRogue` utilisable sans mot de passe diffusé sur l'interface `wlan1` 
+(dongle wi-fi). La connection Internet est dynamiquement partagée avec ce réseau wi-fi. C'est-à-dire que le PiRogue va automatiquement partager la connection active soit `wlan0` soit `eth0`.
+
+L'écran OLED situé sur le dessus du PiRogue affichera : 
+*  les informations d'utilisation disque et RAM
+*  l'adresse IP de l'interface ethernet 
+*  l'adresse IP de l'interface wi-fi `wlan0`
+*  l'adresse IP de l'interface wi-fi `wlan1`
+*  le SSID du réseau wi-fi dédié à la capture
+*  l'indication de capture ou non
+
+Le PiRogue étant basée sur [Kali GNU/Linux](https://www.kali.org/), il offre [un grand nombre d'outils](https://tools.kali.org/).
+
+Ce projet a été initié avec l'active participation de [@MaliciaRogue](https://twitter.com/MaliciaRogue).
+
+## Hardware
+Le PiRogue se base sur :
+*  un Raspberry Pi 3
+*  un dongle `TL WN725N` version `2.1` ou `2.2` 
+*  une SD-card de 32GB
+*  un écran OLED I2C de 0.96" `SSD1306`
+
+Un boîtier réalisable avec une imprimante 3D est [disponible sur Thingiverse](https://www.thingiverse.com/thing:2822262).
+
+### Connexion de l'écran OLED
+Afin de tirer profit de l'écran, vous devez le connecter aux GPIO du Raspberry Pi en suivant ce schéma : 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/U039b/PiRogue/master/pictures/screen_wiring.png" alt="OLED screen wiring"/>
+</p>
+
+Pour plus de détails, vous pouvez consulter le [tutoriel du PiRouter](https://esther.codes/post/pi_router_story/#ep4).
+
+## Demo
+* [Ep1 - Capture du trafic HTTP/S](https://www.youtube.com/watch?v=o0OSaSh0HJw)
+
+## Installation
+* [Guide d'installation](doc/install_fr.md)
+
+## Cas d'usage
+### Proxy transparent avec MITMproxy
+L'utilisation de `mitmproxy` permet 2 modes différents :
+* _normal_ il est nécessaire de préciser l'adresse IP et le port d'écoute de `mitmproxy` dans la section _HTTP proxy_ de la connexion wi-fi de votre équipement (smartphone) cible
+* _transparent_ il n'est pas nécessaire de préciser l'adresse IP ni le port d'écoute de `mitmproxy`
+
+Un script permettant l'utilisation du mode transparent est disponible ici `/usr/share/PiRogue/proxy/transparent.sh`.
+
+### Carte interactive pour Google Location Services
+Rendez-vous sur [GLS live map plugin](https://github.com/PiRanhaLysis/PiRogue/tree/master/mitmproxy).
